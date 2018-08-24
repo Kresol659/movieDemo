@@ -1,0 +1,179 @@
+<!--pages/details/details.wxml-->
+<!--------------------------- 电影详情头部 -------------------------->
+<view class='movie_bg'>
+  <view class='movie_style'>
+    <!-- 上 -->
+    <view class='movie_top'>
+      <view>
+        <image src='{{PreIP+movieData.movie_imgAll}}' class='movie_img'></image>
+      </view>
+      <view class='movie_right'>
+        <view class='movie_name'>
+          <text>{{movieData.movie_name}}</text>
+        </view>
+        <view class='movie_ename'>
+          <text>{{movieData.movie_ename}}</text>
+        </view>
+        <view class='movie_want'>
+          <text>{{movieData.movie_want}}人想看</text>
+        </view>
+        <view class='movie_type'>
+          <text>{{movieData.movie_type}}</text>
+        </view>
+        <view class='movie_area'>
+          <text>{{movieData.movie_area}}/{{movieData.movie_time}}</text>
+        </view>
+        <view class='movie_show'>
+          <text>{{movieData.movie_show}}{{movieData.movie_area}} 首播</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 下 -->
+    <view class='movie_bottom'>
+      <!-- 下左 -->
+      <view class='want_look'>
+        <view class='xin_style'>
+          <image src='../../images/xin.png' class='xin'></image>
+        </view>
+        <text class='want_text'> 想看</text>
+      </view>
+      <!-- 下右 -->
+      <view class='want_look'>
+        <view class='xin_style'>
+          <image src='../../images/star.png' class='xin'></image>
+        </view>
+        <text class='want_text'> 评分</text>
+      </view>
+    </view>
+
+  </view>
+</view>
+<!--------------------------- 简介 -------------------------->
+<view class='intro_main'>
+    <view class='{{showMore}}'>
+     <text>{{movieData.movie_brief}}</text>
+    </view>
+  <button class='showLength' bindtap='changeHeight'><image src='../../images/down_arrow.png' class='show_more {{changeArrow}}'></image></button>
+</view>
+<view class='split_line'>
+</view>
+<view class='actor_main'>
+  <view class='actor_title'>
+    演职人员
+  </view>
+  <view class='actor_style'>
+
+    <!-- 导演显示 -->
+      <view class='actor_show'>
+      <image src='{{PreIP+movieData.movie_director_img}}' class='actor_img'></image>
+      <view class='actor_name'>
+        <text>{{movieData.movie_director}}</text>
+      </view>
+      <view class='actor_act'>
+        <text>导演</text>
+      </view>
+    </view>
+   <!-- 演员显示 -->
+    <view class='actor_show' wx:for="{{movieData.movie_actor_img}}" wx:key="{{item}}">
+      <image src='{{PreIP+item}}' class='actor_img'></image>
+      <view class='actor_name'>
+        <text>{{movieData.actor_name[index]}}</text>
+      </view>
+      <view class='actor_act'>
+        <text>{{movieData.actor_act[index]}}</text>
+      </view>
+    </view>
+
+
+
+  </view>
+</view>
+<view class='split_line'>
+</view>
+<!--------------------------- 票房 -------------------------->
+<view class='piaofang'>
+
+  <text class='sell_top'>票房</text>
+  <view>
+    <view class='sell_main'>
+      <view>
+        <text class='sell_title'>16</text>
+        <view>
+          <text class='sell_text'>昨日票房排行</text>
+        </view>
+      </view>
+
+      <view>
+        <text class='sell_first'>暂无</text>
+        <view>
+          <text class='sell_text'>首周票房(万)</text>
+        </view>
+      </view>
+      <view>
+        <text class='sell_title'>83</text>
+        <view>
+          <text class='sell_text'>首周票房(万)</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class='split_line'>
+</view>
+
+<!--------------------------- 视频和剧照 -------------------------->
+
+<view class='pic_main'>
+  <text class='pictures_title'>视频和剧照</text>
+  <view class='pic_show'>
+    <view wx:for="{{movieData.movie_img}}" class='movie_every' wx:key="{{item}}">
+      <image src='{{PreIP+item}}' class='pictures'>
+      </image>
+    </view>
+  </view>
+</view>
+
+<view class='split_line'>
+</view>
+
+<!--------------------------- 评论 -------------------------->
+<view>
+  <view class='answer_top'>
+    <view>
+      <text class='answer_title'>观众评论</text>
+    </view>
+    <view>
+      <text class='answer_write'>写短评</text>
+    </view>
+  </view>
+
+  <view class='answer_main' wx:for="{{movieData.movie_userComment}}" wx:key="{{item}}">
+    <view class='head_left'>
+      <image src='{{head[index]}}' class='head_img'></image>
+    </view>
+    <view class='head_right'>
+      <view class='user_name'>
+        <text>爱哭鬼卡</text>
+      </view>
+      <view class='score'>
+        <image src='../../images/y_star.png' class='show_star' wx:for="{{starCount}}" wx:key="{{item}}"></image>
+      </view>
+      <view>
+        <text class='answer_text'>{{item}}</text>
+      </view>
+      <view class='zan'>
+      <image src='../../images/zan.png' class='zan_img'></image>
+      <text> {{parserInt(Math.random()*5144)}}</text>
+      </view>
+    </view>
+
+  </view>
+
+</view>
+<view class='toBuy'>
+
+    <text>购票</text>
+
+</view> 

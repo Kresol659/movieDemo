@@ -1,0 +1,119 @@
+<!--index.wxml-->
+
+<!--导航条-->
+<view class='nav_main'>
+
+  <view class="navbar">
+    <view>
+    </view>
+    <text wx:for="{{navbar}}" data-idx="{{index}}" class="item {{currentTab==index ? 'active' : ''}}" wx:key="unique" bindtap="navbarTap">{{item}}</text>
+    <!-- 搜索 -->
+    <view class='search_main' bindtap='toSearch'>
+      <image src='../../images/search.png' class='search_img'></image>
+    </view>
+  </view>
+</view>
+
+
+
+
+<view>
+  <!--热映-->
+  <view hidden="{{currentTab!==0}}">
+    <view class='movie_main' wx:for="{{hotData}}" wx:key="{{item._id}}">
+      <view>
+        <image src='{{PreIP+item.movie_imgAll}}' class='movie_img'></image>
+      </view>
+      <view class='mid_info' bindtap='toDetails' data-id='{{item._id}}' data-type='hot'>
+        <view>
+          <text class='movie_name'>{{item.movie_name}}</text>
+        </view>
+        <view>
+          <text class='movie_type'>{{item.movie_type}}</text>
+        </view>
+        <view>
+          <text class='movie_actor'>主演:{{item.movie_actor}}</text>
+        </view>
+        <view>
+          <text class='show_how' wx:if="{{ item.showThis&&!item.showHotWeek}}">影院将于{{item.movie_show}}上映</text>
+          <text class='show_how' wx:elif="{{item.showThis&&item.showHotWeek}}">影院将于{{item.week}}上映</text>
+          <text class='show_how' wx:else>今天7家影院放映4545场</text>
+
+        </view>
+      </view>
+      <view class='right_show'>
+        <view wx:if="{{ item.showThis }}">
+          <text class='score'>{{item.movie_want}}</text>
+          <text class='score_text'>想看</text>
+        </view>
+        <view wx:else>
+          <text class='score'>{{item.movie_user}}</text>
+          <text class='score_text'>分</text>
+        </view>
+        <view class='outside'>
+          <text class='comming' wx:if="{{ item.showThis }}">预售</text>
+          <text class='buy' wx:else>购票</text>
+
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!--待映-->
+  <view hidden="{{currentTab!==1}}">
+    <view class='split_line'>
+    </view>
+    <view class='top_main'>
+      <view class='recentTitle'>
+        近期最受欢迎
+      </view>
+      <view class='top_all_movie'>
+        <view class='top_movie' wx:for="{{commingData}}" wx:key="{{item._id}}" data-id="{{item._id}}" data-type="comming" bindtap='toDetails'>
+          <view>
+            <image src='{{PreIP+item.movie_imgAll}}' class='movie_img_up'></image>
+          </view>
+          <view>
+            <text class='movie_name_up'>{{item.movie_name}}</text>
+          </view>
+          <view>
+            <text class='movie_want_up'>{{item.movie_want}}想看</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='split_line'>
+    </view>
+    <view class='recentTitle'>
+      {{time}}
+    </view>
+    <view class='movie_main' wx:for="{{commingData}}" wx:key="{{item._id}}" data-id="{{item._id}}" data-type="comming" bindtap='toDetails'>
+      <view>
+        <image src='{{PreIP+item.movie_imgAll}}' class='movie_img'></image>
+      </view>
+      <view class='mid_info'>
+        <view>
+          <text class='movie_name'>{{item.movie_name}}</text>
+        </view>
+        <view>
+          <text class='movie_type'>{{item.movie_type}}</text>
+        </view>
+        <view>
+          <text class='movie_actor'>主演:{{item.movie_actor}}</text>
+        </view>
+        <view>
+          <text class='show_how' wx:if="{{item.showWeek}}">影院将于{{item.week}}上映</text>
+          <text class='show_how' wx:else>影院将于{{item.movie_show}}上映</text>
+        </view>
+      </view>
+      <view class='right_show'>
+        <view>
+          <text class='score'>{{item.movie_want}}</text>
+          <text class='score_text'>想看</text>
+        </view>
+        <view class='outside'>
+          <text class='comming'>预售</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

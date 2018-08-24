@@ -1,0 +1,54 @@
+<!--pages/my/my.wxml-->
+<view class='my_style'>
+  <view wx:for="{{top}}">
+    <view wx:if="{{item.hasBorder}}" class='{{item.class}}'>
+      <view>
+        <text>{{item.title}}</text>
+      </view>
+      <view>
+        <image src='../../images/right_arrow.png' class='right_arrow'></image>
+      </view>
+    </view>
+    <view wx:else class='{{item.class}}'>
+      <view>
+        <text>{{item.title}}</text>
+      </view>
+      <view>
+        <image src='../../images/right_arrow.png' class='right_arrow'></image>
+      </view>
+    </view>
+  </view>
+</view>
+<view class='split_line'></view>
+<view class='my_style'>
+
+  <view wx:for="{{bottom}}">
+
+
+    <view wx:if="{{item.hasBorder}}" class='{{item.class}}'>
+      <view>
+        <text>{{item.title}}</text>
+      </view>
+      <view>
+        <image src='../../images/right_arrow.png' class='right_arrow'></image>
+      </view>
+    </view>
+
+    <view wx:else class='{{item.class}}'>
+      <view>
+        <text>{{item.title}}</text>
+      </view>
+      <view>
+        <image src='../../images/right_arrow.png' class='right_arrow'></image>
+      </view>
+    </view>
+  </view>
+</view>
+<view class='little_sister'>
+  <view class='inner_about'>
+    <text>©</text>
+    <text>猫眼电影 </text>
+    <text> 客服电话：</text>
+    <text class='ser_phone'>1010-5335</text>
+  </view>
+</view>

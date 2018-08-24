@@ -1,0 +1,41 @@
+<!--pages/search/search.wxml-->
+<view class='search_top'>
+  <view>
+    <image src='../../images/search_pre.png' class='search_img'></image>
+    <input type='text' value='' class='search_in' focus='true' bindinput='searchNow'></input>
+  </view>
+  <view>
+    <text class='cancel' bindtap='goBack'>取消</text>
+  </view>
+</view>
+<view wx:if="{{movieData.length>0}}">
+  <!-- 标题 -->
+  <view class='find_title'>
+    <text>电影/电视剧</text>
+  </view>
+  <!-- 搜到的电影 -->
+  <view class='find_movie_main' wx:for="{{movieData}}" wx:key="{{item._id}}">
+    <view>
+      <image src='{{PreIP+item.movie_imgAll}}' class='movie_img'></image>
+    </view>
+    <view class='movie_info'>
+      <view class='movie_name'>
+        <text>{{item.movie_name}}</text>
+      </view>
+      <view class='movie_ename'>
+        <text>{{item.movie_ename}}</text>
+      </view>
+      <view class='movie_type'>
+        <text>{{item.movie_type}}</text>
+      </view>
+
+      <view class='movie_show'>
+        <text>{{item.movie_show}} {{item.movie_area}}首播</text>
+      </view>
+    </view>
+    <view class='movie_right'>
+        <text class='score'>{{item.movie_user}}</text>
+        <text class='score_text'>分</text>
+    </view>
+  </view>
+</view>
